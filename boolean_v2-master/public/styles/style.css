@@ -42,6 +42,10 @@ legend{
 
 /* === LAYOUT === */
 
+.form-container {
+	max-width: 600px;
+}
+
 .wrapper {
 	max-width: 960px;
 	background-color: transparent;
@@ -184,6 +188,7 @@ caption {
 }
 
 /* === RESPONSIVE === */
+
 
 img, embed, object, video {
 	  max-width: 100%;
