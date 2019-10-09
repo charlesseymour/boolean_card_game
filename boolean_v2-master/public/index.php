@@ -13,35 +13,6 @@ include '../inc/header.php';
  
 </header>
 
-<main class="main">
-
-<h2>What is Boolean AND?</h2>
-<p>When you use Boolean AND, the search terms on both sides of the AND are required.  For instance, if you type:</p>
-<p><strong>diabetes and insulin</strong></p>
-<p>into the database, you will only get results that contain BOTH terms.  You won't get anything that talks about diabetes without mentioning insulin, or anything that talks about insulin without mentioning diabetes.  Both words have to show up.</p>
-
-<p>This means that using AND will reduce the number of results you get, because it makes the search more specific.  If you search just:</p>
-
-<p><strong>diabetes</strong></p>
-
-<p>You would get everything that talks about diabetes, whether or not it mentions insulin.</p>
-
-<p>So you want to use the Boolean AND when you need to narrow the search to articles more relevant to your topic.  If your topic is the effect of insulin on diabetes, you would want to join the two words with AND rather than searching just for "diabetes" because otherwise you'll get a lot of articles on diabetes that are irrelevant.</p>
-
-<p>Most of the library databases have 2 or 3 search boxes with small menus between them set to AND:<p>
-
-<img src="images/ebsco_and.png" alt="Database search boxes with Boolean menus" width="214" height="114">
-
-<p>You can either type:</p>
-
-<p><strong>diabetes and insulin</strong></p>
-
-<p>in the same box, or you can type "diabetes" and "insulin" in separate boxes with the AND menu between them.</p>
-
-<p>Try the card game on this page to practice the Boolean AND.</p>
-
-</main>
-
 
 <aside class="sidebar">
 
