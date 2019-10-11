@@ -20,6 +20,8 @@ require_once 'bootstrap.php';
   <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
   
 </head>
 
@@ -33,10 +35,6 @@ require_once 'bootstrap.php';
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <!--<li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>-->
-     
 	<?php if (isAuthenticated()): ?>
 		<li class="nav-item">
 			<a class="nav-link" href="/account.php">My Account</a>
@@ -49,9 +47,6 @@ require_once 'bootstrap.php';
 			<a class="nav-link" href="/login.php">Login</a>
 		</li>
 	<?php endif ?>
-      <!--<li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-      </li>-->
     </ul>	
   </div>
 </nav>

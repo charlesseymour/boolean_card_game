@@ -1,8 +1,14 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 include '../inc/header.php';
 
+if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
+
 ?>
+
 
 <div class="wrapper">
 
@@ -51,11 +57,10 @@ include '../inc/header.php';
 
 	</span>
 
-  
-  <script>
+<script>
 
     // Define deck and subsets
-
+	
     var deck = [{name:"Ace of spades", location:"../images/playing_cards/cards_resized/JPEG/ace_of_spades.jpg"}, {name:"Two of spades", location:"../images/playing_cards/cards_resized/JPEG/2_of_spades.jpg"}, {name:"Three of spades", location:"../images/playing_cards/cards_resized/JPEG/3_of_spades.jpg"}, {name:"Four of spades", location:"../images/playing_cards/cards_resized/JPEG/4_of_spades.jpg"}, {name:"Five of spades", location:"../images/playing_cards/cards_resized/JPEG/5_of_spades.jpg"}, {name:"Six of spades", location:"../images/playing_cards/cards_resized/JPEG/6_of_spades.jpg"}, {name:"Seven of spades", location:"../images/playing_cards/cards_resized/JPEG/7_of_spades.jpg"}, {name:"Eight of spades", location:"../images/playing_cards/cards_resized/JPEG/8_of_spades.jpg"}, {name:"Nine of spades", location:"../images/playing_cards/cards_resized/JPEG/9_of_spades.jpg"}, {name:"Ten of spades", location:"../images/playing_cards/cards_resized/JPEG/10_of_spades.jpg"},  {name:"Jack of spades", location:"../images/playing_cards/cards_resized/JPEG/jack_of_spades2.jpg"}, {name:"Queen of spades", location:"../images/playing_cards/cards_resized/JPEG/queen_of_spades2.jpg"}, {name:"King of spades", location:"../images/playing_cards/cards_resized/JPEG/king_of_spades2.jpg"}, {name:"Ace of clubs", location:"../images/playing_cards/cards_resized/JPEG/ace_of_clubs.jpg"}, {name:"Two of clubs", location:"../images/playing_cards/cards_resized/JPEG/2_of_clubs.jpg"}, {name:"Three of clubs", location:"../images/playing_cards/cards_resized/JPEG/3_of_clubs.jpg"}, {name:"Four of clubs", location:"../images/playing_cards/cards_resized/JPEG/4_of_clubs.jpg"}, {name:"Five of clubs", location:"../images/playing_cards/cards_resized/JPEG/5_of_clubs.jpg"}, {name:"Six of clubs", location:"../images/playing_cards/cards_resized/JPEG/6_of_clubs.jpg"}, {name:"Seven of clubs", location:"../images/playing_cards/cards_resized/JPEG/7_of_clubs.jpg"}, {name:"Eight of clubs", location:"../images/playing_cards/cards_resized/JPEG/8_of_clubs.jpg"}, {name:"Nine of clubs", location:"../images/playing_cards/cards_resized/JPEG/9_of_clubs.jpg"}, {name:"Ten of clubs", location:"../images/playing_cards/cards_resized/JPEG/10_of_clubs.jpg"}, {name:"Jack of clubs", location:"../images/playing_cards/cards_resized/JPEG/jack_of_clubs2.jpg"}, {name:"Queen of clubs", location:"../images/playing_cards/cards_resized/JPEG/queen_of_clubs2.jpg"}, {name:"King of clubs", location:"../images/playing_cards/cards_resized/JPEG/king_of_clubs2.jpg"}, {name:"Ace of hearts", location:"../images/playing_cards/cards_resized/JPEG/ace_of_hearts.jpg"}, {name:"Two of hearts", location:"../images/playing_cards/cards_resized/JPEG/2_of_hearts.jpg"}, {name:"Three of hearts", location:"../images/playing_cards/cards_resized/JPEG/3_of_hearts.jpg"}, {name:"Four of hearts", location:"../images/playing_cards/cards_resized/JPEG/4_of_hearts.jpg"}, {name:"Five of hearts", location:"../images/playing_cards/cards_resized/JPEG/5_of_hearts.jpg"}, {name:"Six of hearts", location:"../images/playing_cards/cards_resized/JPEG/6_of_hearts.jpg"}, {name:"Seven of hearts", location:"../images/playing_cards/cards_resized/JPEG/7_of_hearts.jpg"}, {name:"Eight of hearts", location:"../images/playing_cards/cards_resized/JPEG/8_of_hearts.jpg"}, {name:"Nine of hearts", location:"../images/playing_cards/cards_resized/JPEG/9_of_hearts.jpg"}, {name:"Ten of hearts", location:"../images/playing_cards/cards_resized/JPEG/10_of_hearts.jpg"}, {name:"Jack of hearts", location:"../images/playing_cards/cards_resized/JPEG/jack_of_hearts2.jpg"}, {name:"Queen of hearts", location:"../images/playing_cards/cards_resized/JPEG/queen_of_hearts2.jpg"}, {name:"King of hearts", location:"../images/playing_cards/cards_resized/JPEG/king_of_hearts2.jpg"}, {name:"Ace of diamonds", location:"../images/playing_cards/cards_resized/JPEG/ace_of_diamonds.jpg"}, {name:"Two of diamonds", location:"../images/playing_cards/cards_resized/JPEG/2_of_diamonds.jpg"}, {name:"Three of diamonds", location:"../images/playing_cards/cards_resized/JPEG/3_of_diamonds.jpg"}, {name:"Four of diamonds", location:"../images/playing_cards/cards_resized/JPEG/4_of_diamonds.jpg"}, {name:"Five of diamonds", location:"../images/playing_cards/cards_resized/JPEG/5_of_diamonds.jpg"}, {name:"Six of diamonds", location:"../images/playing_cards/cards_resized/JPEG/6_of_diamonds.jpg"}, {name:"Seven of diamonds", location:"../images/playing_cards/cards_resized/JPEG/7_of_diamonds.jpg"}, {name:"Eight of diamonds", location:"../images/playing_cards/cards_resized/JPEG/8_of_diamonds.jpg"}, {name:"Nine of diamonds", location:"../images/playing_cards/cards_resized/JPEG/9_of_diamonds.jpg"}, {name:"Ten of diamonds", location:"../images/playing_cards/cards_resized/JPEG/10_of_diamonds.jpg"}, {name:"Jack of diamonds", location:"../images/playing_cards/cards_resized/JPEG/jack_of_diamonds2.jpg"}, {name:"Queen of diamonds", location:"../images/playing_cards/cards_resized/JPEG/queen_of_diamonds2.jpg"}, {name:"King of diamonds", location:"../images/playing_cards/cards_resized/JPEG/king_of_diamonds2.jpg"}];
     
     var redCards = ["Ace of hearts", "Two of hearts", "Three of hearts", "Four of hearts", "Five of hearts", "Six of hearts", "Seven of hearts", "Eight of hearts", "Nine of hearts", "Ten of hearts", "Jack of hearts", "Queen of hearts", "King of hearts", "Ace of diamonds", "Two of diamonds", "Three of diamonds", "Four of diamonds", "Five of diamonds", "Six of diamonds", "Seven of diamonds", "Eight of diamonds", "Nine of diamonds", "Ten of diamonds", "Jack of diamonds", "Queen of diamonds", "King of diamonds"]
@@ -188,25 +193,45 @@ include '../inc/header.php';
           return element === answers[index]; 
         });
         if (is_same === true) {
-		feedback.innerHTML = " ";
-		submitButton.innerHTML = " ";
-        var response = document.createElement("span");
-		response.style.fontWeight = "bold";
-		document.getElementById("feedback").appendChild(response);
-        response.innerHTML = "Correct!  To play again, click the New Spread button.";
-        } else {
-          feedback.innerHTML = " ";
-		  attemptNumber = attemptNumber + 1;
-          var response = document.createElement("span");
-		  response.style.fontWeight = "bold";
-          document.getElementById("feedback").appendChild(response);
-		  if (attemptNumber % 3 === 1) {response.innerHTML = "Incorrect.  You can change your answers and click Submit to try again, or click the New Spread button to get a new quiz.";
-		  } else if (attemptNumber % 3 === 2) {
-			  response.innerHTML = "Not quite.  Change your selections and try again or click the button at the top to get a new spread.";
-		  } else {
-			  response.innerHTML = "Sorry, try again, or click New Spread to start a new game." + "<br>" + "<br>";
-			  
-		  };
+			<?php if (isAuthenticated()): ?>
+				/*$.ajax({
+					method: "POST",
+					url: "insertPlay.php",
+					data: { date: Date.now(), mode: "and", win: 1, user_id:"<?php $user_id ?>" }
+				});*/
+				var date = Date.now();
+				var mode = "and";
+				var win = 1;
+				var user_id = "<?php echo $user_id ?>";
+				var xhr = new XMLHttpRequest();
+				xhr.open('POST', 'insertPlay.php', true);
+				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+				xhr.onreadystatechange = function() { 
+					if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+						return;
+					}
+				}
+				xhr.send("date=" + date + "&mode=" + mode + "&win=" + win + "&user_id=" + user_id);
+			<?php endif ?>
+			feedback.innerHTML = " ";
+			submitButton.innerHTML = " ";
+			var response = document.createElement("span");
+			response.style.fontWeight = "bold";
+			document.getElementById("feedback").appendChild(response);
+			response.innerHTML = "Correct!  To play again, click the New Spread button.";
+		} else {
+			feedback.innerHTML = " ";
+			attemptNumber = attemptNumber + 1;
+			var response = document.createElement("span");
+			response.style.fontWeight = "bold";
+			document.getElementById("feedback").appendChild(response);
+			if (attemptNumber % 3 === 1) {
+				response.innerHTML = "Incorrect.  You can change your answers and click Submit to try again, or click the New Spread button to get a new quiz.";
+			} else if (attemptNumber % 3 === 2) {
+				  response.innerHTML = "Not quite.  Change your selections and try again or click the button at the top to get a new spread.";
+			} else {
+				  response.innerHTML = "Sorry, try again, or click New Spread to start a new game." + "<br>" + "<br>";
+			};
         };
       };
       
@@ -216,7 +241,6 @@ include '../inc/header.php';
     };
 
     buttonEl.addEventListener("click", onButtonClick); 
-
 
 
 
