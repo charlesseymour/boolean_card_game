@@ -105,18 +105,17 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
       var right_hand = facets[randomNumber2].name;
       var leftAnswer = facets[randomNumber1].subset;
       var rightAnswer = facets[randomNumber2].subset;
-      var attemptNumber = 0;
       //determining all cards from the entire deck that match the boolean statement
 	  if (leftAnswer.length <= rightAnswer.length) {
         for (i = 0; i < leftAnswer.length; i++) {
-          if (rightAnswer.indexOf(leftAnswer[i]) !== -1)
-          {correct.push(leftAnswer[i])
+          if (rightAnswer.indexOf(leftAnswer[i]) !== -1) {
+			  correct.push(leftAnswer[i])
           } 
-            }
+        }
       } else {
         for (i = 0; i < rightAnswer.length; i++) {
-          if (leftAnswer.indexOf(rightAnswer[i]) !== -1)
-          {correct.push(rightAnswer[i])
+          if (leftAnswer.indexOf(rightAnswer[i]) !== -1) {
+			correct.push(rightAnswer[i])
           } 
         };
       };
@@ -156,16 +155,12 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 			answers.push(this.alt);                    
             }
           };
-
-          document.getElementById("output").appendChild(x);             
+		  document.getElementById("output").appendChild(x);             
 		  dealt.push(card);
         } else {
           //dealt.push(card);
           i = i - 1;
         };
-        
-
-
       };
       //submit button checks answers
 	  var lineBreak = document.createElement("p");
@@ -192,52 +187,41 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
          var is_same = correctInSpread.length == answers.length && correctInSpread.every(function(element, index) {
           return element === answers[index]; 
         });
-        if (is_same === true) {
-			<?php if (isAuthenticated()): ?>
-				/*$.ajax({
-					method: "POST",
-					url: "insertPlay.php",
-					data: { date: Date.now(), mode: "and", win: 1, user_id:"<?php $user_id ?>" }
-				});*/
-				var date = Date.now();
-				var mode = "and";
-				var win = 1;
-				var user_id = "<?php echo $user_id ?>";
-				var xhr = new XMLHttpRequest();
-				xhr.open('POST', 'insertPlay.php', true);
-				xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-				xhr.onreadystatechange = function() { 
-					if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-						return;
-					}
+		// if logged in, add the play to the database
+		<?php if (isAuthenticated()): ?>
+			var date = Date.now();
+			var mode = "and";
+			var win = (is_same === true) ? 1 : 0;
+			var user_id = "<?php echo $user_id ?>";
+			var xhr = new XMLHttpRequest();
+			xhr.open('POST', 'insertPlay.php', true);
+			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+			xhr.onreadystatechange = function() { 
+				if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+					return;
 				}
-				xhr.send("date=" + date + "&mode=" + mode + "&win=" + win + "&user_id=" + user_id);
-			<?php endif ?>
-			feedback.innerHTML = " ";
-			submitButton.innerHTML = " ";
-			var response = document.createElement("span");
-			response.style.fontWeight = "bold";
-			document.getElementById("feedback").appendChild(response);
+			}
+			xhr.send("date=" + date + "&mode=" + mode + "&win=" + win + "&user_id=" + user_id);
+		<?php endif ?>
+		feedback.innerHTML = " ";
+		submitButton.innerHTML = " ";
+		var response = document.createElement("span");
+		response.style.fontWeight = "bold";
+		document.getElementById("feedback").appendChild(response);
+        if (is_same === true) {
 			response.innerHTML = "Correct!  To play again, click the New Spread button.";
 		} else {
-			feedback.innerHTML = " ";
-			attemptNumber = attemptNumber + 1;
-			var response = document.createElement("span");
-			response.style.fontWeight = "bold";
-			document.getElementById("feedback").appendChild(response);
-			if (attemptNumber % 3 === 1) {
-				response.innerHTML = "Incorrect.  You can change your answers and click Submit to try again, or click the New Spread button to get a new quiz.";
-			} else if (attemptNumber % 3 === 2) {
-				  response.innerHTML = "Not quite.  Change your selections and try again or click the button at the top to get a new spread.";
-			} else {
-				  response.innerHTML = "Sorry, try again, or click New Spread to start a new game." + "<br>" + "<br>";
-			};
+			var cards = document.getElementsByTagName("IMG");
+			for (const card of cards) {
+				if (correctInSpread.includes(card.getAttribute("alt"))) {
+					card.style.borderColor = "green";
+				} else {
+					card.style.opacity = "0.2";
+				}
+			}
+			response.innerHTML = "Sorry. Cards that match the Boolean (if any) are highlighted.  To play again, click the New Spread button.";
         };
       };
-      
-
-
-      
     };
 
     buttonEl.addEventListener("click", onButtonClick); 
