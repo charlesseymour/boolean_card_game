@@ -19,20 +19,19 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
  
 </header>
 
-
-<aside class="sidebar">
-
-<h2>Card Game for Boolean AND</h2>
-	
-	<div id="explanation">
-
-    <p>Click the button to get a random spread of 21 cards.  Above the spread will be a Boolean statement using AND.  Click to highlight all the cards (if any) that match the Boolean statement, then click the Submit button under the spread to check your answer. (Some Boolean statements will have no matching cards; in this case, just click the Submit button without highlighting any cards.)</p>
-	
-	<p>For example, the Boolean expression</p>
-	<p><strong>face card AND red</strong></p>
-	<p>is asking for all the cards (if any) that are BOTH face cards AND red.  In the entire deck, the six cards that satisfy this condition are the King, Queen, and Jack of hearts, and the King, Queen, and Jack of diamonds.  Only these cards fulfill BOTH conditions; they are face cards, AND they are red.  You would highlight any of these six cards that appear in your spread. <a href="help.html" target="_blank">Explanation of card terms</a> (opens in new window).</p>
-	
+<div class="container boolean-options">
+	<div class="row">
+		<div class="col text-center">
+		  <button type="button" class="btn btn-outline-dark btn-lg">AND</button>
+		</div>
+		<div class="col text-center">
+		  <button type="button" class="btn btn-outline-dark btn-lg">OR</button>
+		</div>
+		<div class="col text-center">
+		  <button type="button" class="btn btn-outline-dark btn-lg">NOT</button>
+		</div>
 	</div>
+</div>
 
     <div id="buttons">
 
@@ -236,7 +235,6 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 
   </script>
 
-</aside>
 
 
 

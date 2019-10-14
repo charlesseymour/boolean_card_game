@@ -195,39 +195,11 @@ img, embed, object, video {
 	  height: auto;
 }
 
-@media (max-width: 767px) {
  
-    .main, .sidebar {
-        width: auto;
-        float: none;
-        padding: 1%;
-    }	
-	
- }
-
-/* === PRINT === */
+@media (min-width: 576px) {
+    .boolean-options{
+        max-width: 400px;
+    }
+}
 
 
-
-@media print {
- 
-  * {
-      color: #000 !important;
-  }
- 
-   .banner, .primary-menu, .sidebar, .site-footer, .no-print {
-      display: none;
-   }
- 
-   body {
-      background: #fff;
-      font-size: 12pt;
-   }
- 
-   .wrapper, .main, .sidebar {
-      border: none;
-      float: none;
-      width: auto;
-   }
- 
-} 
