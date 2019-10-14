@@ -21,14 +21,16 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 
 <div class="container boolean-options">
 	<div class="row">
-		<div class="col text-center">
-		  <button type="button" class="btn btn-outline-dark btn-lg">AND</button>
-		</div>
-		<div class="col text-center">
-		  <button type="button" class="btn btn-outline-dark btn-lg">OR</button>
-		</div>
-		<div class="col text-center">
-		  <button type="button" class="btn btn-outline-dark btn-lg">NOT</button>
+		<div class="btn-group btn-group-toggle" data-toggle="buttons">
+		<label class="btn btn-secondary active">
+			<input type="radio" name="options" id="option1" autocomplete="off" checked> AND
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" id="option2" autocomplete="off"> OR
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" id="option3" autocomplete="off"> NOT
+		</label>
 		</div>
 	</div>
 </div>
