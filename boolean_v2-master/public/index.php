@@ -22,14 +22,14 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 <div class="container boolean-options">
 	<div class="row">
 		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-		<label class="btn btn-secondary active">
-			<input type="radio" name="options" id="option1" autocomplete="off" checked> AND
+		<label class="btn btn-secondary active" name="and">
+			<input type="radio" name="and" id="option1" autocomplete="off" checked> AND
 		</label>
-		<label class="btn btn-secondary">
-			<input type="radio" name="options" id="option2" autocomplete="off"> OR
+		<label class="btn btn-secondary" name="or">
+			<input type="radio" name="or" id="option2" autocomplete="off"> OR
 		</label>
-		<label class="btn btn-secondary">
-			<input type="radio" name="options" id="option3" autocomplete="off"> NOT
+		<label class="btn btn-secondary" name="not">
+			<input type="radio" name="not" id="option3" autocomplete="off"> NOT
 		</label>
 		</div>
 	</div>
@@ -86,6 +86,14 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
     
     // Define facets of cards to be used in generating booleans
     var facets=[{name:"red", subset:redCards}, {name:"black", subset:blackCards}, {name:"club", subset:clubCards}, {name:"spade", subset:spadeCards}, {name:"heart", subset:heartCards}, {name:"diamond", subset:diamondCards}, {name:"odd", subset:oddCards}, {name:"even", subset:evenCards}, {name:"face card", subset:faceCards}, {name:"number card", subset:numberCards}];
+
+	//
+	$(".btn-group-toggle label").on("click", function() {
+		var filteringType = ""
+		var label = $(this).attr('name');
+		// filteringType=label.attr('name');
+		alert(label);
+	});
 
     // Button to generate spread and Boolean statement
     var buttonEl = document.getElementById("spread_button");
