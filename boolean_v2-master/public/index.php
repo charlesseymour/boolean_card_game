@@ -154,14 +154,14 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 			this.style.borderRadius = "10px";
 			answers.push(this.alt);                    
             }
-          };
+          }
 		  document.getElementById("output").appendChild(x);             
 		  dealt.push(card);
         } else {
           //dealt.push(card);
           i = i - 1;
-        };
-      };
+        }
+      }
       //submit button checks answers
 	  var lineBreak = document.createElement("p");
       document.getElementById("output").appendChild(lineBreak);
@@ -179,8 +179,8 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
           if (correct.indexOf(dealt[i]) !== -1) {
             correctInSpread.push(dealt[i]);
             
-          };
-        };
+          }
+        }
         //compare correctInSpread with answers
          correctInSpread.sort();
          answers.sort();
@@ -208,10 +208,13 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 		var response = document.createElement("span");
 		response.style.fontWeight = "bold";
 		document.getElementById("feedback").appendChild(response);
+		var cards = document.getElementsByTagName("IMG");
+		for (const card of cards) {
+			card.onclick = null;
+		}
         if (is_same === true) {
 			response.innerHTML = "Correct!  To play again, click the New Spread button.";
 		} else {
-			var cards = document.getElementsByTagName("IMG");
 			for (const card of cards) {
 				if (correctInSpread.includes(card.getAttribute("alt"))) {
 					card.style.borderColor = "green";
@@ -220,9 +223,9 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 				}
 			}
 			response.innerHTML = "Sorry. Cards that match the Boolean (if any) are highlighted.  To play again, click the New Spread button.";
-        };
-      };
-    };
+        }
+      }
+    }
 
     buttonEl.addEventListener("click", onButtonClick); 
 
