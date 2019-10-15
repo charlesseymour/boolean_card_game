@@ -21,25 +21,17 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 
 <div class="container boolean-options">
 	<div class="row">
-		<div class="btn-group btn-group-toggle" data-toggle="buttons">
-		<label class="btn btn-secondary active" name="and">
-			<input type="radio" name="and" id="option1" autocomplete="off" checked> AND
-		</label>
-		<label class="btn btn-secondary" name="or">
-			<input type="radio" name="or" id="option2" autocomplete="off"> OR
-		</label>
-		<label class="btn btn-secondary" name="not">
-			<input type="radio" name="not" id="option3" autocomplete="off"> NOT
-		</label>
-		</div>
+		<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('and')">AND</button>
+		<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('or')">OR</button>
+		<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('not')">NOT</button>
 	</div>
 </div>
 
-    <div id="buttons">
+    <!--<div id="buttons">
 
       <button id="spread_button">Get my spread</button>
 
-    </div>
+    </div>-->
 
     <div id="boolean">
 
@@ -87,18 +79,22 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
     // Define facets of cards to be used in generating booleans
     var facets=[{name:"red", subset:redCards}, {name:"black", subset:blackCards}, {name:"club", subset:clubCards}, {name:"spade", subset:spadeCards}, {name:"heart", subset:heartCards}, {name:"diamond", subset:diamondCards}, {name:"odd", subset:oddCards}, {name:"even", subset:evenCards}, {name:"face card", subset:faceCards}, {name:"number card", subset:numberCards}];
 
-	//
-	$(".btn-group-toggle label").on("click", function() {
-		var filteringType = ""
-		var label = $(this).attr('name');
-		// filteringType=label.attr('name');
-		alert(label);
-	});
+	//var buttonEl = document.getElementById("spread_button"); // test
+	//buttonEl.addEventListener("click", onButtonClick); // test
+	
+	// Select Boolean operator 
+	//var operator = 'and';
+	/*$(".btn-group-toggle label").on("click", function() {
+		//var filteringType = ""
+		operator = $(this).attr('name');
+		onButtonClick(operator);
+	});*/
 
     // Button to generate spread and Boolean statement
-    var buttonEl = document.getElementById("spread_button");
-    var onButtonClick = function() {
-      document.getElementById("spread_button").innerHTML = "New spread";
+    //var buttonEl = document.getElementById("spread_button");
+    var makeSpread = function(operator) {
+	  //alert(operator);
+      //document.getElementById("spread_button").innerHTML = "New spread";
       document.getElementById("boolean").innerHTML = " ";
       document.getElementById("output").innerHTML = " ";
       document.getElementById("feedback").innerHTML = " ";
@@ -114,23 +110,39 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
       var right_hand = facets[randomNumber2].name;
       var leftAnswer = facets[randomNumber1].subset;
       var rightAnswer = facets[randomNumber2].subset;
-      //determining all cards from the entire deck that match the boolean statement
-	  if (leftAnswer.length <= rightAnswer.length) {
-        for (i = 0; i < leftAnswer.length; i++) {
-          if (rightAnswer.indexOf(leftAnswer[i]) !== -1) {
-			  correct.push(leftAnswer[i])
-          } 
-        }
-      } else {
-        for (i = 0; i < rightAnswer.length; i++) {
-          if (leftAnswer.indexOf(rightAnswer[i]) !== -1) {
-			correct.push(rightAnswer[i])
-          } 
-        };
-      };
-      //print boolean statement
+      // Determine all cards from the entire deck that match the boolean statement
+	  if (operator == 'and') {
+		  if (leftAnswer.length <= rightAnswer.length) {
+			for (i = 0; i < leftAnswer.length; i++) {
+			  if (rightAnswer.indexOf(leftAnswer[i]) !== -1) {
+				  correct.push(leftAnswer[i])
+			  } 
+			}
+		  } else {
+			for (i = 0; i < rightAnswer.length; i++) {
+			  if (leftAnswer.indexOf(rightAnswer[i]) !== -1) {
+				correct.push(rightAnswer[i])
+			  } 
+			};
+		  };
+	  } else if (operator == 'or') {
+		  for (answer of leftAnswer) {
+			  correct.push(answer);
+		  }
+		  for (answer of rightAnswer) {
+			  if (!correct.includes(answer)) {
+				  correct.push(answer);
+			  }
+		  }
+	  } else {
+		  correct = leftAnswer.filter( function( el ) {
+			  return rightAnswer.indexOf( el ) < 0;
+		  });
+	  }
+      // Print boolean statement
       var x = document.createElement("P");
-      var t = document.createTextNode("Boolean statement" + " " + ":" + " " + left_hand + " " + "AND" + " " + right_hand);
+      var t = document.createTextNode("Boolean statement" + " " + ":" + " " + left_hand + 
+									  " " + operator + " " + right_hand);
       x.appendChild(t);
       document.getElementById("boolean").appendChild(x);
 	  //create 21 card spread
@@ -236,7 +248,7 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
       }
     }
 
-    buttonEl.addEventListener("click", onButtonClick); 
+    //buttonEl.addEventListener("click", onButtonClick); 
 
 
 
