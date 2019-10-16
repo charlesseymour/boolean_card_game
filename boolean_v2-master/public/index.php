@@ -211,7 +211,7 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 		// if logged in, add the play to the database
 		<?php if (isAuthenticated()): ?>
 			var date = Date.now();
-			var mode = "and";
+			var mode = operator;
 			var win = (is_same === true) ? 1 : 0;
 			var user_id = "<?php echo $user_id ?>";
 			var xhr = new XMLHttpRequest();
@@ -234,7 +234,7 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 			card.onclick = null;
 		}
         if (is_same === true) {
-			response.innerHTML = "Correct!  To play again, click the New Spread button.";
+			response.innerHTML = "Correct!";
 		} else {
 			for (const card of cards) {
 				if (correctInSpread.includes(card.getAttribute("alt"))) {
@@ -243,7 +243,7 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 					card.style.opacity = "0.2";
 				}
 			}
-			response.innerHTML = "Sorry. Cards that match the Boolean (if any) are highlighted.  To play again, click the New Spread button.";
+			response.innerHTML = "Sorry. Cards that match the Boolean (if any) are highlighted.";
         }
       }
     }
