@@ -77,68 +77,68 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
     var numberCards = ["Ace of spades", "Two of spades", "Three of spades", "Four of spades", "Five of spades", "Six of spades", "Seven of spades", "Eight of spades", "Nine of spades", "Ten of spades", "Ace of clubs", "Two of clubs", "Three of clubs", "Four of clubs", "Five of clubs", "Six of clubs", "Seven of clubs", "Eight of clubs", "Nine of clubs", "Ten of clubs", "Ace of hearts", "Two of hearts", "Three of hearts", "Four of hearts", "Five of hearts", "Six of hearts", "Seven of hearts", "Eight of hearts", "Nine of hearts", "Ten of hearts", "Ace of diamonds", "Two of diamonds", "Three of diamonds", "Four of diamonds", "Five of diamonds", "Six of diamonds", "Seven of diamonds", "Eight of diamonds", "Nine of diamonds", "Ten of diamonds"];
     
     // Define facets of cards to be used in generating booleans
-    var facets=[{name:"red", subset:redCards}, {name:"black", subset:blackCards}, {name:"club", subset:clubCards}, {name:"spade", subset:spadeCards}, {name:"heart", subset:heartCards}, {name:"diamond", subset:diamondCards}, {name:"odd", subset:oddCards}, {name:"even", subset:evenCards}, {name:"face card", subset:faceCards}, {name:"number card", subset:numberCards}];
+    var facets=[{name:"red", subset:redCards}, {name:"black", subset:blackCards}, 
+				{name:"club", subset:clubCards}, {name:"spade", subset:spadeCards}, 
+				{name:"heart", subset:heartCards}, {name:"diamond", subset:diamondCards}, 
+				{name:"odd", subset:oddCards}, {name:"even", subset:evenCards}, 
+				{name:"face card", subset:faceCards}, {name:"number card", subset:numberCards}];
 
-	//var buttonEl = document.getElementById("spread_button"); // test
-	//buttonEl.addEventListener("click", onButtonClick); // test
-	
-	// Select Boolean operator 
-	//var operator = 'and';
-	/*$(".btn-group-toggle label").on("click", function() {
-		//var filteringType = ""
-		operator = $(this).attr('name');
-		onButtonClick(operator);
-	});*/
-
-    // Button to generate spread and Boolean statement
-    //var buttonEl = document.getElementById("spread_button");
+	// Function for generating random Boolean statement and spread of cards
     var makeSpread = function(operator) {
-	  //alert(operator);
-      //document.getElementById("spread_button").innerHTML = "New spread";
       document.getElementById("boolean").innerHTML = " ";
       document.getElementById("output").innerHTML = " ";
       document.getElementById("feedback").innerHTML = " ";
 	  document.getElementById("submitButton").innerHTML = " ";
       var answers = [ ];
-      var correct = [ ];
+      //var correct = [ ];
       var dealt = [ ];
       var spread = [ ];
       var correctInSpread = [ ];
-      var randomNumber1 = Math.floor(Math.random()*10);
-      var randomNumber2 = Math.floor(Math.random()*10);
-      var left_hand = facets[randomNumber1].name;
-      var right_hand = facets[randomNumber2].name;
-      var leftAnswer = facets[randomNumber1].subset;
-      var rightAnswer = facets[randomNumber2].subset;
-      // Determine all cards from the entire deck that match the boolean statement
-	  if (operator == 'and') {
-		  if (leftAnswer.length <= rightAnswer.length) {
-			for (i = 0; i < leftAnswer.length; i++) {
-			  if (rightAnswer.indexOf(leftAnswer[i]) !== -1) {
-				  correct.push(leftAnswer[i])
-			  } 
-			}
-		  } else {
-			for (i = 0; i < rightAnswer.length; i++) {
-			  if (leftAnswer.indexOf(rightAnswer[i]) !== -1) {
-				correct.push(rightAnswer[i])
-			  } 
-			};
-		  };
-	  } else if (operator == 'or') {
-		  for (answer of leftAnswer) {
-			  correct.push(answer);
-		  }
-		  for (answer of rightAnswer) {
-			  if (!correct.includes(answer)) {
+	  // Generate random card aspects for left and right hand of boolean statement,
+	  // repeating until they are different and at least one card in the deck
+	  // satisfies the statement
+	  do {
+		  var randomNumber1 = Math.floor(Math.random()*10);
+		  do {
+			var randomNumber2 = Math.floor(Math.random()*10);
+		  } while (randomNumber1 == randomNumber2);
+		  var left_hand = facets[randomNumber1].name;
+		  var right_hand = facets[randomNumber2].name;
+		  var leftAnswer = facets[randomNumber1].subset;
+		  var rightAnswer = facets[randomNumber2].subset;
+		  var correct = [ ];
+		  // Determine all cards from the entire deck that match the boolean statement
+		  if (operator == 'and') {
+			  if (leftAnswer.length <= rightAnswer.length) {
+				for (i = 0; i < leftAnswer.length; i++) {
+				  if (rightAnswer.indexOf(leftAnswer[i]) !== -1) {
+					  correct.push(leftAnswer[i])
+				  } 
+				}
+			  } else {
+				for (i = 0; i < rightAnswer.length; i++) {
+				  if (leftAnswer.indexOf(rightAnswer[i]) !== -1) {
+					correct.push(rightAnswer[i])
+				  } 
+				};
+			  };
+		  } else if (operator == 'or') {
+			  for (answer of leftAnswer) {
 				  correct.push(answer);
 			  }
+			  for (answer of rightAnswer) {
+				  if (!correct.includes(answer)) {
+					  correct.push(answer);
+				  }
+			  }
+		  } else {
+			  correct = leftAnswer.filter( function( el ) {
+				  return rightAnswer.indexOf( el ) < 0;
+			  });
 		  }
-	  } else {
-		  correct = leftAnswer.filter( function( el ) {
-			  return rightAnswer.indexOf( el ) < 0;
-		  });
-	  }
+	  } while (correct.length == 0 || correct.length == leftAnswer.length || 
+			   (operator != 'not' && correct.length == rightAnswer.length));
+      console.log(correct);
       // Print boolean statement
       var x = document.createElement("P");
       var t = document.createTextNode("Boolean statement" + " " + ":" + " " + left_hand + 
@@ -248,14 +248,7 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
       }
     }
 
-    //buttonEl.addEventListener("click", onButtonClick); 
-
-
-
-
-
-
-  </script>
+</script>
 
 
 
