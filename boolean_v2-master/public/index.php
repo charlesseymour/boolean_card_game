@@ -21,9 +21,15 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 
 <div class="container boolean-options">
 	<div class="row">
-		<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('and')">AND</button>
-		<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('or')">OR</button>
-		<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('not')">NOT</button>
+		<div class="col text-center">
+			<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('and')">AND</button>
+		</div>
+		<div class="col text-center">
+			<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('or')">OR</button>
+		</div>
+		<div class="col text-center">
+			<button type="button" class="btn btn-outline-dark btn-lg" onclick="makeSpread('not')">NOT</button>
+		</div>
 	</div>
 </div>
 
