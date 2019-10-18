@@ -88,7 +88,7 @@
 			   (operator != 'not' && correct.length == rightAnswer.length));
       console.log(correct);
       // Print boolean statement
-      var x = document.createElement("P");
+      var x = document.createElement("H2");
       var t = document.createTextNode("Boolean statement" + " " + ":" + " " + left_hand + 
 									  " " + operator + " " + right_hand);
       x.appendChild(t);
@@ -136,8 +136,7 @@
       document.getElementById("output").appendChild(lineBreak);
       var submit_button = document.createElement('button');
 	  document.getElementById("submitButton").appendChild(submit_button);
-	  submit_button.style.display = "inline";
-	  submit_button.style.marginTop = "20%";
+	  submit_button.classList.add("btn", "btn-primary");
       submit_button.innerHTML = 'Submit answer'; 
       submit_button.addEventListener("click", myFunction);
       function myFunction() {
