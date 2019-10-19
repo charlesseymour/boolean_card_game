@@ -157,7 +157,7 @@
         });
 		// if logged in, add the play to the database
 		<?php if (isAuthenticated()): ?>
-			var date = Date.now();
+			var date = "<?php echo date('m/d/Y g:i:s a') ?>";
 			var mode = operator;
 			var win = (is_same === true) ? 1 : 0;
 			var user_id = "<?php echo $user_id ?>";
