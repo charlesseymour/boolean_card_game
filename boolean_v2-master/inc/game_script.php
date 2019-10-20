@@ -4,27 +4,42 @@
 	
     var deck = [{name:"Ace of spades", location:"../images/playing_cards/cards_resized/JPEG/ace_of_spades.jpg"}, {name:"Two of spades", location:"../images/playing_cards/cards_resized/JPEG/2_of_spades.jpg"}, {name:"Three of spades", location:"../images/playing_cards/cards_resized/JPEG/3_of_spades.jpg"}, {name:"Four of spades", location:"../images/playing_cards/cards_resized/JPEG/4_of_spades.jpg"}, {name:"Five of spades", location:"../images/playing_cards/cards_resized/JPEG/5_of_spades.jpg"}, {name:"Six of spades", location:"../images/playing_cards/cards_resized/JPEG/6_of_spades.jpg"}, {name:"Seven of spades", location:"../images/playing_cards/cards_resized/JPEG/7_of_spades.jpg"}, {name:"Eight of spades", location:"../images/playing_cards/cards_resized/JPEG/8_of_spades.jpg"}, {name:"Nine of spades", location:"../images/playing_cards/cards_resized/JPEG/9_of_spades.jpg"}, {name:"Ten of spades", location:"../images/playing_cards/cards_resized/JPEG/10_of_spades.jpg"},  {name:"Jack of spades", location:"../images/playing_cards/cards_resized/JPEG/jack_of_spades2.jpg"}, {name:"Queen of spades", location:"../images/playing_cards/cards_resized/JPEG/queen_of_spades2.jpg"}, {name:"King of spades", location:"../images/playing_cards/cards_resized/JPEG/king_of_spades2.jpg"}, {name:"Ace of clubs", location:"../images/playing_cards/cards_resized/JPEG/ace_of_clubs.jpg"}, {name:"Two of clubs", location:"../images/playing_cards/cards_resized/JPEG/2_of_clubs.jpg"}, {name:"Three of clubs", location:"../images/playing_cards/cards_resized/JPEG/3_of_clubs.jpg"}, {name:"Four of clubs", location:"../images/playing_cards/cards_resized/JPEG/4_of_clubs.jpg"}, {name:"Five of clubs", location:"../images/playing_cards/cards_resized/JPEG/5_of_clubs.jpg"}, {name:"Six of clubs", location:"../images/playing_cards/cards_resized/JPEG/6_of_clubs.jpg"}, {name:"Seven of clubs", location:"../images/playing_cards/cards_resized/JPEG/7_of_clubs.jpg"}, {name:"Eight of clubs", location:"../images/playing_cards/cards_resized/JPEG/8_of_clubs.jpg"}, {name:"Nine of clubs", location:"../images/playing_cards/cards_resized/JPEG/9_of_clubs.jpg"}, {name:"Ten of clubs", location:"../images/playing_cards/cards_resized/JPEG/10_of_clubs.jpg"}, {name:"Jack of clubs", location:"../images/playing_cards/cards_resized/JPEG/jack_of_clubs2.jpg"}, {name:"Queen of clubs", location:"../images/playing_cards/cards_resized/JPEG/queen_of_clubs2.jpg"}, {name:"King of clubs", location:"../images/playing_cards/cards_resized/JPEG/king_of_clubs2.jpg"}, {name:"Ace of hearts", location:"../images/playing_cards/cards_resized/JPEG/ace_of_hearts.jpg"}, {name:"Two of hearts", location:"../images/playing_cards/cards_resized/JPEG/2_of_hearts.jpg"}, {name:"Three of hearts", location:"../images/playing_cards/cards_resized/JPEG/3_of_hearts.jpg"}, {name:"Four of hearts", location:"../images/playing_cards/cards_resized/JPEG/4_of_hearts.jpg"}, {name:"Five of hearts", location:"../images/playing_cards/cards_resized/JPEG/5_of_hearts.jpg"}, {name:"Six of hearts", location:"../images/playing_cards/cards_resized/JPEG/6_of_hearts.jpg"}, {name:"Seven of hearts", location:"../images/playing_cards/cards_resized/JPEG/7_of_hearts.jpg"}, {name:"Eight of hearts", location:"../images/playing_cards/cards_resized/JPEG/8_of_hearts.jpg"}, {name:"Nine of hearts", location:"../images/playing_cards/cards_resized/JPEG/9_of_hearts.jpg"}, {name:"Ten of hearts", location:"../images/playing_cards/cards_resized/JPEG/10_of_hearts.jpg"}, {name:"Jack of hearts", location:"../images/playing_cards/cards_resized/JPEG/jack_of_hearts2.jpg"}, {name:"Queen of hearts", location:"../images/playing_cards/cards_resized/JPEG/queen_of_hearts2.jpg"}, {name:"King of hearts", location:"../images/playing_cards/cards_resized/JPEG/king_of_hearts2.jpg"}, {name:"Ace of diamonds", location:"../images/playing_cards/cards_resized/JPEG/ace_of_diamonds.jpg"}, {name:"Two of diamonds", location:"../images/playing_cards/cards_resized/JPEG/2_of_diamonds.jpg"}, {name:"Three of diamonds", location:"../images/playing_cards/cards_resized/JPEG/3_of_diamonds.jpg"}, {name:"Four of diamonds", location:"../images/playing_cards/cards_resized/JPEG/4_of_diamonds.jpg"}, {name:"Five of diamonds", location:"../images/playing_cards/cards_resized/JPEG/5_of_diamonds.jpg"}, {name:"Six of diamonds", location:"../images/playing_cards/cards_resized/JPEG/6_of_diamonds.jpg"}, {name:"Seven of diamonds", location:"../images/playing_cards/cards_resized/JPEG/7_of_diamonds.jpg"}, {name:"Eight of diamonds", location:"../images/playing_cards/cards_resized/JPEG/8_of_diamonds.jpg"}, {name:"Nine of diamonds", location:"../images/playing_cards/cards_resized/JPEG/9_of_diamonds.jpg"}, {name:"Ten of diamonds", location:"../images/playing_cards/cards_resized/JPEG/10_of_diamonds.jpg"}, {name:"Jack of diamonds", location:"../images/playing_cards/cards_resized/JPEG/jack_of_diamonds2.jpg"}, {name:"Queen of diamonds", location:"../images/playing_cards/cards_resized/JPEG/queen_of_diamonds2.jpg"}, {name:"King of diamonds", location:"../images/playing_cards/cards_resized/JPEG/king_of_diamonds2.jpg"}];
     
-    var redCards = ["Ace of hearts", "Two of hearts", "Three of hearts", "Four of hearts", "Five of hearts", "Six of hearts", "Seven of hearts", "Eight of hearts", "Nine of hearts", "Ten of hearts", "Jack of hearts", "Queen of hearts", "King of hearts", "Ace of diamonds", "Two of diamonds", "Three of diamonds", "Four of diamonds", "Five of diamonds", "Six of diamonds", "Seven of diamonds", "Eight of diamonds", "Nine of diamonds", "Ten of diamonds", "Jack of diamonds", "Queen of diamonds", "King of diamonds"]
+    var clubCards = ["Ace of clubs", "Two of clubs", "Three of clubs", "Four of clubs", "Five of clubs", 
+					 "Six of clubs", "Seven of clubs", "Eight of clubs", "Nine of clubs", "Ten of clubs", 
+					 "Jack of clubs", "Queen of clubs", "King of clubs"];
     
-    var blackCards = ["Ace of spades", "Two of spades", "Three of spades", "Four of spades", "Five of spades", "Six of spades", "Seven of spades", "Eight of spades", "Nine of spades", "Ten of spades", "Jack of spades", "Queen of spades", "King of spades", "Ace of clubs", "Two of clubs", "Three of clubs", "Four of clubs", "Five of clubs", "Six of clubs", "Seven of clubs", "Eight of clubs", "Nine of clubs", "Ten of clubs", "Jack of clubs", "Queen of clubs", "King of clubs"];
+    var spadeCards = ["Ace of spades", "Two of spades", "Three of spades", "Four of spades", "Five of spades", 
+	                  "Six of spades", "Seven of spades", "Eight of spades", "Nine of spades", "Ten of spades", 
+					  "Jack of spades", "Queen of spades", "King of spades"]
     
-    var clubCards = ["Ace of clubs", "Two of clubs", "Three of clubs", "Four of clubs", "Five of clubs", "Six of clubs", "Seven of clubs", "Eight of clubs", "Nine of clubs", "Ten of clubs", "Jack of clubs", "Queen of clubs", "King of clubs"];
+    var heartCards = ["Ace of hearts", "Two of hearts", "Three of hearts", "Four of hearts", "Five of hearts", 
+	                  "Six of hearts", "Seven of hearts", "Eight of hearts", "Nine of hearts", "Ten of hearts", 
+					  "Jack of hearts", "Queen of hearts", "King of hearts"];
     
-    var spadeCards = ["Ace of spades", "Two of spades", "Three of spades", "Four of spades", "Five of spades", "Six of spades", "Seven of spades", "Eight of spades", "Nine of spades", "Ten of spades", "Jack of spades", "Queen of spades", "King of spades"]
+    var diamondCards = ["Ace of diamonds", "Two of diamonds", "Three of diamonds", "Four of diamonds", "Five of diamonds", 
+	                    "Six of diamonds", "Seven of diamonds", "Eight of diamonds", "Nine of diamonds", "Ten of diamonds", 
+						"Jack of diamonds", "Queen of diamonds", "King of diamonds"];
+   
+    var oddCards = ["Ace of spades", "Three of spades", "Five of spades", "Seven of spades", "Nine of spades", 
+	                "Ace of clubs", "Three of clubs", "Five of clubs", "Seven of clubs", "Nine of clubs", 
+					"Ace of hearts", "Three of hearts", "Five of hearts", "Seven of hearts", "Nine of hearts", 
+					"Ace of diamonds", "Three of diamonds", "Five of diamonds", "Seven of diamonds", "Nine of diamonds"];
     
-    var heartCards = ["Ace of hearts", "Two of hearts", "Three of hearts", "Four of hearts", "Five of hearts", "Six of hearts", "Seven of hearts", "Eight of hearts", "Nine of hearts", "Ten of hearts", "Jack of hearts", "Queen of hearts", "King of hearts"];
+    var evenCards = ["Two of spades", "Four of spades", "Six of spades", "Eight of spades", "Ten of spades", 
+	                 "Two of clubs", "Four of clubs", "Six of clubs", "Eight of clubs", "Ten of clubs", 
+					 "Two of hearts", "Four of hearts", "Six of hearts", "Eight of hearts", "Ten of hearts", 
+					 "Two of diamonds", "Four of diamonds", "Six of diamonds", "Eight of diamonds", "Ten of diamonds"];
     
-    var diamondCards = ["Ace of diamonds", "Two of diamonds", "Three of diamonds", "Four of diamonds", "Five of diamonds", "Six of diamonds", "Seven of diamonds", "Eight of diamonds", "Nine of diamonds", "Ten of diamonds", "Jack of diamonds", "Queen of diamonds", "King of diamonds"];
-    
-    var oddCards = ["Ace of spades", "Three of spades", "Five of spades", "Seven of spades", "Nine of spades", "Ace of clubs", "Three of clubs", "Five of clubs", "Seven of clubs", "Nine of clubs", "Ace of hearts", "Three of hearts", "Five of hearts", "Seven of hearts", "Nine of hearts", "Ace of diamonds", "Three of diamonds", "Five of diamonds", "Seven of diamonds", "Nine of diamonds"];
-    
-    var evenCards = ["Two of spades", "Four of spades", "Six of spades", "Eight of spades", "Ten of spades", "Two of clubs", "Four of clubs", "Six of clubs", "Eight of clubs", "Ten of clubs", "Two of hearts", "Four of hearts", "Six of hearts", "Eight of hearts", "Ten of hearts", "Two of diamonds", "Four of diamonds", "Six of diamonds", "Eight of diamonds", "Ten of diamonds"];
-    
-    var faceCards = ["Jack of spades", "Queen of spades", "King of spades", "Jack of clubs", "Queen of clubs", "King of clubs", "Jack of hearts", "Queen of hearts", "King of hearts", "Jack of diamonds", "Queen of diamonds", "King of diamonds"];
-    
-    var numberCards = ["Ace of spades", "Two of spades", "Three of spades", "Four of spades", "Five of spades", "Six of spades", "Seven of spades", "Eight of spades", "Nine of spades", "Ten of spades", "Ace of clubs", "Two of clubs", "Three of clubs", "Four of clubs", "Five of clubs", "Six of clubs", "Seven of clubs", "Eight of clubs", "Nine of clubs", "Ten of clubs", "Ace of hearts", "Two of hearts", "Three of hearts", "Four of hearts", "Five of hearts", "Six of hearts", "Seven of hearts", "Eight of hearts", "Nine of hearts", "Ten of hearts", "Ace of diamonds", "Two of diamonds", "Three of diamonds", "Four of diamonds", "Five of diamonds", "Six of diamonds", "Seven of diamonds", "Eight of diamonds", "Nine of diamonds", "Ten of diamonds"];
-    
-    // Define facets of cards to be used in generating booleans
+    var faceCards = ["Jack of spades", "Queen of spades", "King of spades", 
+	                 "Jack of clubs", "Queen of clubs", "King of clubs", 
+					 "Jack of hearts", "Queen of hearts", "King of hearts", 
+					 "Jack of diamonds", "Queen of diamonds", "King of diamonds"];	
+	
+	var redCards = heartCards.concat(diamondCards);
+	var blackCards = clubCards.concat(spadeCards);
+	var numberCards = oddCards.concat(evenCards);
+	
+	// Define facets of cards to be used in generating booleans
     var facets=[{name:"red", subset:redCards}, {name:"black", subset:blackCards}, 
 				{name:"club", subset:clubCards}, {name:"spade", subset:spadeCards}, 
 				{name:"heart", subset:heartCards}, {name:"diamond", subset:diamondCards}, 

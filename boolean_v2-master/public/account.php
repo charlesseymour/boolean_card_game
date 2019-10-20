@@ -20,7 +20,6 @@ requireAuth();
 		$stmt = $db->prepare("SELECT * FROM plays WHERE user_id = " . $userId);
 		$stmt->execute();
 		$results = $stmt->fetchAll();
-		//print_r($results);
 		foreach ($results as $result) {
 			$date = $result['date'];
 			$mode = strtoupper($result['mode']);
