@@ -39,7 +39,11 @@ $perPage = 10;
 			$html .= '<li class="page-item';
 			if ($i+1 == $page) { $html .= ' active';}
 			$html .= '"><a class="page-link"';
-			if ($i+1 != $page) { $html .= "href=\"/account.php?page=$page&number=$perPage\""; }
+			if ($i+1 != $page) { 
+				$html .= "href=\"/account.php?page=" ;
+			    $html .= $i+1;
+				$html .= "&number=$perPage\""; 
+			}
 			$html .= ">";
 			$html .= $i+1;
 			$html .= "</a></li>";
