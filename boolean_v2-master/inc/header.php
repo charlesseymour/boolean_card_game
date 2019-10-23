@@ -37,7 +37,7 @@ require_once 'bootstrap.php';
     <ul class="navbar-nav mr-auto">
 	<?php if (isAuthenticated()): ?>
 		<li class="nav-item">
-			<a class="nav-link" href="/account.php">My Account</a>
+			<a class="nav-link" href="/account.php?page=1&number=10">My Account</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link" href="/doLogout.php" tabindex="-1">Logout</a>
