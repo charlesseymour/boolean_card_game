@@ -64,7 +64,8 @@ echo $page;
 			}
 			$html .= "</a></li>";
 		}
-		// if more than 5 pages:
+		// Generate page navigation buttons
+		// if total number of pages > 5:
 		//   if current page 1-4, show 1 2 3 4 ...
 		//   if current page >= total - 4, show e.g  ... 7 8 9 10
 		//   otherwise show e.g. ... 4 5 6 ...
@@ -122,7 +123,7 @@ echo $page;
 	  </thead>
 	  <tbody>
 		<?php 
-			foreach ($results as $result) {
+			foreach (array_slice($results, (($page - 1) * $perPage), $perPage)  as $result) {
 				$date = $result['date'];
 				$mode = strtoupper($result['mode']);
 				if ($result['win'] == 0) {
