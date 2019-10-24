@@ -15,7 +15,7 @@ $wins = array_filter($results, function($v){
 $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
 $perPage = filter_input(INPUT_GET, 'number', FILTER_SANITIZE_NUMBER_INT);
 $pages = ceil(count($results) / $perPage);
-echo $page;
+
 ?>
 <div class="container">
 	<div class="row pt-5">
@@ -27,7 +27,7 @@ echo $page;
 </div>
 
 <div class="container">
-	<nav aria-label="Play history page navigation">
+	<nav class="nav justify-content-between" aria-label="Play history page navigation">
 	  <ul class="pagination pagination-sm">
 		<li class="page-item <?php if ($page == 1) {echo 'disabled'; } ?>">
 			<a class="page-link" <?php if ($page != 1) {
@@ -112,6 +112,32 @@ echo $page;
 		<?php if ($page != $pages) { echo "href=\"account.php?page=" . ($pages) . "&number=$perPage\"";
 		} ?>>Last</a></li>
 	  </ul>
+	
+	<div class="dropdown">
+	  <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		Results per page
+	  </button>
+	  <div class="dropdown-menu float-right" aria-labelledby="dropdownMenuButton">
+		<?php 
+			$arr = array('10', '25', '50');
+			foreach ($arr as $value) {
+				echo '<a class="dropdown-item';
+				if ($perPage == $value) {
+					echo " active";
+				}
+				echo '"';
+				if ($perPage != $value) {
+					echo 'href="/account.php?page=1&number=' . $value . '"';
+				}
+				echo ">$value</a>";
+			}
+		?>
+				<!--<a class="dropdown-item" href="#">10</a>
+				<a class="dropdown-item" href="#">25</a>
+				<a class="dropdown-item" href="#">50</a>-->
+
+	  </div>
+	</div>
 	</nav>
 	<table class="table table-striped">
 	  <thead>
