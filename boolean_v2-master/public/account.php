@@ -15,7 +15,7 @@ $wins = array_filter($results, function($v){
 $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
 $perPage = filter_input(INPUT_GET, 'number', FILTER_SANITIZE_NUMBER_INT);
 $pages = ceil(count($results) / $perPage);
-echo $pages;
+echo $page;
 ?>
 <div class="container">
 	<div class="row pt-5">
@@ -39,22 +39,24 @@ echo $pages;
 			}?>>Previous</a></li>
 		<?php 
 		$html = "";
-		function addPageLink ($index, $isLink) {
+		function addPageLink ($isLink, $num = null) {
 			global $html, $page, $perPage;
 			$html .= '<li class="page-item';
-			if ($index + 1 == $page) { $html .= ' active';}
+			// Add active class to link for current page
+			if ($num  == $page) { $html .= ' active';}
 			$html .= '"><a class="page-link"';
-			if ($index + 1 == $page) { 
+			// Button for current page doesn't link
+			if ($num == $page) { 
 				$html .= ">";
-				$html .= $index + 1;
+				$html .= $num;
 			}
-			if ($index + 1 != $page) { 
+			if ($num  != $page) { 
 				if ($isLink) {
 					$html .= "href=\"/account.php?page=" ;
-					$html .= $index+1;
+					$html .= $num;
 					$html .= "&number=$perPage\""; 
 					$html .= ">";
-					$html .= $index+1;
+					$html .= $num;
 				} else {
 					$html .= ">";
 					$html .= '...';
@@ -67,52 +69,39 @@ echo $pages;
 		//   if current page >= total - 4, show e.g  ... 7 8 9 10
 		//   otherwise show e.g. ... 4 5 6 ...
 		// if 5 or fewer pages, show all pages e.g 1 2 3 4 5
-		for ($i = 0; $i < 5; $i++) {
+		for ($i = 1; $i < 6; $i++) {
 			if ($pages > 5) {
 				if ($page < 5) {
-					if ($i < 4) {
-					    addPageLink($i, true);
+					if ($i < 5) {
+					    addPageLink(true, $i);
 					} else {
-						addPageLink($i, false);
+						addPageLink(false);
 					}
 				} else if ($page > $pages - 4) {
-					if ($i == 0) {
-						addPageLink($i, false);
+					if ($i == 1) {
+						addPageLink(false);
 					} else {
-						addPageLink($pages - (5 - $i), true);
+						addPageLink(true, $pages - (5 - $i));
 					}
 				} else {
-					if ($i == 0 || $i == 4) {
-						addPageLink($i, false);
+					if ($i == 1 || $i == 5) {
+						addPageLink(false);
 					} else {
 						if ($page % 3 == 2) {
-							//$page, $page + 1, $page + 2
-							addPageLink($page + ($i - 1), true);
+							addPageLink(true, $page + ($i - 2));
 						} else if ($page % 3 == 1) {
-							//$page - 2, $page - 1, $page
-							addPageLink($page - (3 - $i), true);
+							addPageLink(true, $page - (4 - $i));
 						} else {
-							//$page % 3 = 0
-							//$page - 1, $page, $page + 1
-							addPageLink($page - (2 - $i), true);
+							addPageLink(true, $page - (3 - $i));
 						}
 					}
 				}
+			} else {
+				if ($i <= $pages) {
+					addPageLink(true, $i);
+				}
 			}
 		}
-		/*for ($i = 0; $i < $pages; $i++) {
-			$html .= '<li class="page-item';
-			if ($i+1 == $page) { $html .= ' active';}
-			$html .= '"><a class="page-link"';
-			if ($i+1 != $page) { 
-				$html .= "href=\"/account.php?page=" ;
-			    $html .= $i+1;
-				$html .= "&number=$perPage\""; 
-			}
-			$html .= ">";
-			$html .= $i+1;
-			$html .= "</a></li>";
-		}*/
 		echo $html;
 		?>
 		<li class="page-item <?php if ($page == $pages) {echo 'disabled'; } ?>"><a class="page-link" 
