@@ -39,7 +39,7 @@ $pages = ceil(count($results) / $perPage);
 			}?>>Previous</a></li>
 		<?php 
 		$html = "";
-		function addPageLink ($isLink, $num = null) {
+		function addPageLink ($num, $isEllipsis = false) {
 			global $html, $page, $perPage;
 			$html .= '<li class="page-item';
 			// Add active class to link for current page
@@ -50,15 +50,18 @@ $pages = ceil(count($results) / $perPage);
 				$html .= ">";
 				$html .= $num;
 			}
-			if ($num  != $page) { 
-				if ($isLink) {
-					$html .= "href=\"/account.php?page=" ;
+			if ($num != $page) { 
+				$html .= "href=\"/account.php?page=" ;
+				//if (!$isEllipsis) {
 					$html .= $num;
-					$html .= "&number=$perPage\""; 
-					$html .= ">";
+				//} else {
+				//	$html .= $num + 1;
+				//}
+				$html .= "&number=$perPage\""; 
+				$html .= ">";
+				if (!$isEllipsis) {
 					$html .= $num;
 				} else {
-					$html .= ">";
 					$html .= '...';
 				}
 			}
@@ -74,32 +77,41 @@ $pages = ceil(count($results) / $perPage);
 			if ($pages > 5) {
 				if ($page < 5) {
 					if ($i < 5) {
-					    addPageLink(true, $i);
+					    addPageLink($i);
 					} else {
-						addPageLink(false);
+						addPageLink($i, true);
 					}
 				} else if ($page > $pages - 4) {
 					if ($i == 1) {
-						addPageLink(false);
+						addPageLink($pages - 4, true);
 					} else {
-						addPageLink(true, $pages - (5 - $i));
+						addPageLink($pages - (5 - $i));
 					}
 				} else {
-					if ($i == 1 || $i == 5) {
-						addPageLink(false);
-					} else {
-						if ($page % 3 == 2) {
-							addPageLink(true, $page + ($i - 2));
-						} else if ($page % 3 == 1) {
-							addPageLink(true, $page - (4 - $i));
+					if ($page % 3 == 2) {
+						if ($i == 1 || $i == 5) {
+							addPageLink($page + ($i - 2), true);
 						} else {
-							addPageLink(true, $page - (3 - $i));
+							addPageLink($page + ($i - 2));
+						}
+					} else if ($page % 3 == 1) {
+						if ($i == 1 || $i == 5) {
+							addPageLink($page - (4 - $i), true);
+						} else {
+							addPageLink($page - (4 - $i));
+						}
+					} else {
+						if ($i == 1 || $i == 5) {
+							addPageLink($page - (3 - $i), true);
+						} else {
+							addPageLink($page - (3 - $i));
 						}
 					}
+				
 				}
 			} else {
 				if ($i <= $pages) {
-					addPageLink(true, $i);
+					addPageLink($i);
 				}
 			}
 		}
