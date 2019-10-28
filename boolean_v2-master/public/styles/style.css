@@ -187,6 +187,28 @@ caption {
 	border-radius: 10px;
 }
 
+
+.win-percentage {
+	background-color: LightPink;
+	border-radius: 5px;
+	padding: 5px 20px;
+	width: auto;
+	font-size: 2em;
+}
+
+.card {
+	/*display: inline-block;*/
+	border: none;
+}
+
+.card-body {
+	text-align: center;
+}
+
+.card-title {
+	
+}
+
 /* === RESPONSIVE === */
 
 
@@ -200,6 +222,15 @@ img, embed, object, video {
     .boolean-options{
         max-width: 400px;
     }
+	/*.boolean-wins {
+		max-width: 400px;
+	}*/
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+	.win-percentage {
+		font-size: 1.5em;
+	}
 }
 
 

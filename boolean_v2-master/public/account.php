@@ -11,6 +11,24 @@ $results = $stmt->fetchAll();
 $wins = array_filter($results, function($v){
 	return $v['win'] == 1;
 });
+$resultsAnd = array_filter($results, function($v){
+	return $v['mode'] == 'and';
+});
+$winsAnd = array_filter($resultsAnd, function($v){
+	return $v['win'] == 1;
+});
+$resultsOr = array_filter($results, function($v){
+	return $v['mode'] == 'or';
+});
+$winsOr = array_filter($resultsOr, function($v){
+	return $v['win'] == 1;
+});
+$resultsNot = array_filter($results, function($v){
+	return $v['mode'] == 'not';
+});
+$winsNot = array_filter($resultsNot, function($v){
+	return $v['win'] == 1;
+});
 
 $page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
 $perPage = filter_input(INPUT_GET, 'number', FILTER_SANITIZE_NUMBER_INT);
@@ -22,7 +40,58 @@ $pages = ceil(count($results) / $perPage);
 		<h1 class="mx-auto">Play history</h1>
 	</div>
 	<div class="row pb-5">
-		<h6 class="mx-auto">Win percentage: <?php echo round((count($wins) / count($results)) * 100); ?>%</h6>
+		<h5 class="mx-auto">Win percentages</h5>
+	</div>
+	<div class="row boolean-wins">
+		<div class="col-sm-3">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">ALL</h5>
+					<p class="win-percentage"><?php echo round((count($wins) / count($results)) * 100); ?>%</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">AND</h5>
+					<p class="win-percentage"><?php echo round((count($winsAnd) / count($resultsAnd)) * 100); ?>%</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">OR</h5>
+					<p class="win-percentage"><?php echo round((count($winsOr) / count($resultsOr)) * 100); ?>%</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-sm-3">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">NOT</h5>
+					<p class="win-percentage"><?php echo round((count($winsNot) / count($resultsNot)) * 100); ?>%</p>
+				</div>
+			</div>
+		</div>
+		<!--<div class="col col-auto text-center">ALL</div>
+		<div class="col col-auto text-center">AND</div>
+		<div class="col col-auto text-center">OR</div>
+		<div class="col col-auto text-center">NOT</div>
+		<div class="w-100"></div>
+		<div class="col col-auto text-center">
+			<button type="button" class="btn btn-primary btn-lg" disabled><?php echo round((count($wins) / count($results)) * 100); ?>%</button>
+		</div>
+		<div class="col col-auto text-center">
+			<button type="button" class="btn btn-primary btn-lg" disabled><?php echo round((count($winsAnd) / count($resultsAnd)) * 100); ?>%
+		</div>
+		<div class="col col-auto text-center">
+			<button type="button" class="btn btn-primary btn-lg" disabled><?php echo round((count($winsOr) / count($resultsOr)) * 100); ?>% 
+		</div>
+		<div class="col col-auto text-center">
+			<button type="button" class="btn btn-primary btn-lg" disabled><?php echo round((count($winsNot) / count($resultsNot)) * 100); ?>%
+		</div>-->
 	</div>
 </div>
 
@@ -52,11 +121,7 @@ $pages = ceil(count($results) / $perPage);
 			}
 			if ($num != $page) { 
 				$html .= "href=\"/account.php?page=" ;
-				//if (!$isEllipsis) {
-					$html .= $num;
-				//} else {
-				//	$html .= $num + 1;
-				//}
+				$html .= $num;
 				$html .= "&number=$perPage\""; 
 				$html .= ">";
 				if (!$isEllipsis) {
@@ -144,10 +209,6 @@ $pages = ceil(count($results) / $perPage);
 				echo ">$value</a>";
 			}
 		?>
-				<!--<a class="dropdown-item" href="#">10</a>
-				<a class="dropdown-item" href="#">25</a>
-				<a class="dropdown-item" href="#">50</a>-->
-
 	  </div>
 	</div>
 	</nav>
