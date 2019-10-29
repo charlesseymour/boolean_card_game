@@ -173,7 +173,7 @@ $pages = ceil(count($results) / $perPage);
 		} ?>>>></a></li>
 	  </ul>
 	
-	<div class="dropdown">
+	<div id="per-page" class="dropdown">
 	  <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		Results per page
 	  </button>

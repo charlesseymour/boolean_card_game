@@ -196,6 +196,10 @@ caption {
 	font-size: 2em;
 }
 
+#per-page {
+	margin-bottom: 15px;
+}
+
 .card {
 	/*display: inline-block;*/
 	border: none;
