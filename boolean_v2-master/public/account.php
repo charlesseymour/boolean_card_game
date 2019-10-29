@@ -37,10 +37,7 @@ $pages = ceil(count($results) / $perPage);
 ?>
 <div class="container">
 	<div class="row pt-5">
-		<h1 class="mx-auto">Play history</h1>
-	</div>
-	<div class="row pb-5">
-		<h5 class="mx-auto">Win percentages</h5>
+		<h1 class="mx-auto">Win Percentages</h1>
 	</div>
 	<div class="row boolean-wins">
 		<div class="col-sm-3">
@@ -75,37 +72,23 @@ $pages = ceil(count($results) / $perPage);
 				</div>
 			</div>
 		</div>
-		<!--<div class="col col-auto text-center">ALL</div>
-		<div class="col col-auto text-center">AND</div>
-		<div class="col col-auto text-center">OR</div>
-		<div class="col col-auto text-center">NOT</div>
-		<div class="w-100"></div>
-		<div class="col col-auto text-center">
-			<button type="button" class="btn btn-primary btn-lg" disabled><?php echo round((count($wins) / count($results)) * 100); ?>%</button>
-		</div>
-		<div class="col col-auto text-center">
-			<button type="button" class="btn btn-primary btn-lg" disabled><?php echo round((count($winsAnd) / count($resultsAnd)) * 100); ?>%
-		</div>
-		<div class="col col-auto text-center">
-			<button type="button" class="btn btn-primary btn-lg" disabled><?php echo round((count($winsOr) / count($resultsOr)) * 100); ?>% 
-		</div>
-		<div class="col col-auto text-center">
-			<button type="button" class="btn btn-primary btn-lg" disabled><?php echo round((count($winsNot) / count($resultsNot)) * 100); ?>%
-		</div>-->
 	</div>
 </div>
 
 <div class="container">
+	<div class="row pt-5 mb-5">
+		<h1 class="mx-auto">Play History</h1>
+	</div>
 	<nav class="nav justify-content-between" aria-label="Play history page navigation">
 	  <ul class="pagination pagination-sm">
 		<li class="page-item <?php if ($page == 1) {echo 'disabled'; } ?>">
 			<a class="page-link" <?php if ($page != 1) {
 				echo "href=\"account.php?page=" . 1 . "&number=$perPage\"";
-			}?>>First</a></li>
+			}?>><<</a></li>
 		<li class="page-item <?php if ($page == 1) {echo 'disabled'; } ?>">
 			<a class="page-link" <?php if ($page != 1) {
 				echo "href=\"account.php?page=" . ($page-1) . "&number=$perPage\"";
-			}?>>Previous</a></li>
+			}?>><</a></li>
 		<?php 
 		$html = "";
 		function addPageLink ($num, $isEllipsis = false) {
@@ -184,10 +167,10 @@ $pages = ceil(count($results) / $perPage);
 		?>
 		<li class="page-item <?php if ($page == $pages) {echo 'disabled'; } ?>"><a class="page-link" 
 		<?php if ($page != $pages) { echo "href=\"account.php?page=" . ($page + 1) . "&number=$perPage\"";
-		} ?>>Next</a></li>
+		} ?>>></a></li>
 		<li class="page-item <?php if ($page == $pages) {echo 'disabled'; } ?>"><a class="page-link"
 		<?php if ($page != $pages) { echo "href=\"account.php?page=" . ($pages) . "&number=$perPage\"";
-		} ?>>Last</a></li>
+		} ?>>>></a></li>
 	  </ul>
 	
 	<div class="dropdown">
