@@ -21,7 +21,7 @@ if (isAuthenticated()) { $user_id = decodeJwt('sub'); }
 	?> Click 
 	one of the Boolean buttons below to start playing.</p>
     <div class="container boolean-options">
-		<div class="row">
+		<div id="boolean-buttons" class="row">
 			<div class="col text-center">
 				<button type="button" class="btn btn-primary btn-lg" onclick="makeSpread('and')">AND</button>
 			</div>

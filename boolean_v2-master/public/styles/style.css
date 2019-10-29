@@ -221,6 +221,15 @@ img, embed, object, video {
 	  height: auto;
 }
 
+@media (max-width: 320px) {
+	#boolean-buttons {
+		display: block;
+	}
+	#boolean-buttons .btn-lg {
+		width: 100%;
+		margin-bottom: 5px;
+	}
+}
  
 @media (min-width: 576px) {
     .boolean-options{
