@@ -77,17 +77,17 @@ $pages = ceil(count($results) / $perPage);
 
 <div class="container">
 	<div class="row pt-5 mb-5">
-		<h1 class="mx-auto">Play History</h1>
+		<h1 id="history" class="mx-auto">Play History</h1>
 	</div>
 	<nav class="nav justify-content-between" aria-label="Play history page navigation">
 	  <ul class="pagination pagination-sm">
 		<li class="page-item <?php if ($page == 1) {echo 'disabled'; } ?>">
 			<a class="page-link" <?php if ($page != 1) {
-				echo "href=\"account.php?page=" . 1 . "&number=$perPage\"";
+				echo "href=\"account.php?page=" . 1 . "&number=$perPage#history\"";
 			}?>><<</a></li>
 		<li class="page-item <?php if ($page == 1) {echo 'disabled'; } ?>">
 			<a class="page-link" <?php if ($page != 1) {
-				echo "href=\"account.php?page=" . ($page-1) . "&number=$perPage\"";
+				echo "href=\"account.php?page=" . ($page-1) . "&number=$perPage#history\"";
 			}?>><</a></li>
 		<?php 
 		$html = "";
@@ -105,7 +105,7 @@ $pages = ceil(count($results) / $perPage);
 			if ($num != $page) { 
 				$html .= "href=\"/account.php?page=" ;
 				$html .= $num;
-				$html .= "&number=$perPage\""; 
+				$html .= "&number=$perPage#history\""; 
 				$html .= ">";
 				if (!$isEllipsis) {
 					$html .= $num;
@@ -166,10 +166,10 @@ $pages = ceil(count($results) / $perPage);
 		echo $html;
 		?>
 		<li class="page-item <?php if ($page == $pages) {echo 'disabled'; } ?>"><a class="page-link" 
-		<?php if ($page != $pages) { echo "href=\"account.php?page=" . ($page + 1) . "&number=$perPage\"";
+		<?php if ($page != $pages) { echo "href=\"account.php?page=" . ($page + 1) . "&number=$perPage#history\"";
 		} ?>>></a></li>
 		<li class="page-item <?php if ($page == $pages) {echo 'disabled'; } ?>"><a class="page-link"
-		<?php if ($page != $pages) { echo "href=\"account.php?page=" . ($pages) . "&number=$perPage\"";
+		<?php if ($page != $pages) { echo "href=\"account.php?page=" . ($pages) . "&number=$perPage#history\"";
 		} ?>>>></a></li>
 	  </ul>
 	
