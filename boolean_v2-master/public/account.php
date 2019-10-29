@@ -187,7 +187,7 @@ $pages = ceil(count($results) / $perPage);
 				}
 				echo '"';
 				if ($perPage != $value) {
-					echo 'href="/account.php?page=1&number=' . $value . '"';
+					echo 'href="/account.php?page=1&number=' . $value . '#history"';
 				}
 				echo ">$value</a>";
 			}
