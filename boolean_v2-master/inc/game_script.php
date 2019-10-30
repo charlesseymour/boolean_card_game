@@ -196,7 +196,7 @@
 			card.onclick = null;
 		}
         if (is_same === true) {
-			response.innerHTML = "Correct! Click a Boolean button above to play again.";
+			response.innerHTML = 'Correct! Click a Boolean button <a href="#boolean-buttons">above</a> to play again.';
 		} else {
 			for (const card of cards) {
 				if (correctInSpread.includes(card.getAttribute("alt"))) {
