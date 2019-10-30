@@ -7,6 +7,8 @@ header, main, aside, footer {
 body {
 	margin: 0;
 	font-family: 'Source Sans Pro', sans-serif;
+	max-width: 1500px;
+	margin: auto;
 }
 
 #firstSentence {
