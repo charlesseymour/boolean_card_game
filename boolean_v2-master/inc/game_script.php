@@ -205,7 +205,7 @@
 					card.style.opacity = "0.2";
 				}
 			}
-			response.innerHTML = "Sorry. Cards that match the Boolean are highlighted. Click a Boolean button above to play again.";
+			response.innerHTML = 'Sorry. Cards that match the Boolean are highlighted. Click a Boolean button <a href="#boolean-buttons">above</a> to play again.';
         }
       }
     }
