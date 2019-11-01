@@ -105,21 +105,24 @@
       // Print boolean statement
       var x = document.createElement("H2");
       var t = document.createTextNode("Boolean statement" + " " + ":" + " " + left_hand + 
-									  " " + operator + " " + right_hand);
+									  " " + operator.toUpperCase() + " " + right_hand);
       x.appendChild(t);
       document.getElementById("boolean").appendChild(x);
-	  //create 21 card spread
-      for (i = 0; i < 21; i++) {
+	  // create 21 card spread
+	  var spreadDiv = document.createElement("DIV");
+	  spreadDiv.setAttribute("class", "container");
+      for (i = 0; i < 24; i++) {
         var randomNumber = Math.floor(Math.random()*52);
         var card = deck[randomNumber].name;
-        //optional code for generating rows of 4 cards each
-		/*var rowNumber = i % 4;
-        if (rowNumber === 0) {
-          var row = document.createElement("p");
-		  var element = document.getElementById("output");
-          element.appendChild(row);
-        }*/
+		// create new Bootstrap row every sixth card
+        if (i % 6 === 0) {
+          var spreadRow = document.createElement("DIV");
+		  spreadRow.setAttribute("class", "row no-gutters");
+        }
+		// create cards and attach to row
         if (dealt.indexOf(card) === -1) {
+		  var spreadColumn = document.createElement("DIV");
+		  spreadColumn.setAttribute("class", "col-4 col-md-2");
           var x = document.createElement("IMG");
 		  x.setAttribute("src", deck[randomNumber].location);
 		  x.setAttribute("alt", deck[randomNumber].name);
@@ -127,8 +130,7 @@
 		  x.style.border = "5px solid transparent";
 		  x.style.borderRadius = "10px";
 		  x.style.cursor = "pointer";
-		  document.body.appendChild(x);
-          //when cards are clicked, they are highlighted and sent to the answers array
+		  //when cards are clicked, they are highlighted and sent to the answers array
 		  x.onclick = function() {
 			if (this.style.border === "5px solid gold") {
 				this.style.borderColor = "transparent";
@@ -140,13 +142,19 @@
 				answers.push(this.alt);                    
             }
           }
-		  document.getElementById("output").appendChild(x);             
+		  spreadColumn.appendChild(x);
+		  spreadRow.appendChild(spreadColumn);
 		  dealt.push(card);
         } else {
           //dealt.push(card);
           i = i - 1;
         }
+		// After six cards added to row, append row to spread container
+		if (i % 6 === 5) {
+			spreadDiv.appendChild(spreadRow);
+		}
       }
+	  document.getElementById("output").appendChild(spreadDiv);
       //submit button checks answers
 	  var lineBreak = document.createElement("p");
       document.getElementById("output").appendChild(lineBreak);
