@@ -178,6 +178,11 @@ td:nth-child(2) {
 	font-size: 125%;
 }
 
+.boolean-options {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
 .cardDiv {
 	cursor: pointer;
 }
