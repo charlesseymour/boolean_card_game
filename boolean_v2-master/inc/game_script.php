@@ -130,13 +130,14 @@
 		  document.body.appendChild(x);
           //when cards are clicked, they are highlighted and sent to the answers array
 		  x.onclick = function() {
-			if (this.style.border === "5px solid gold")     
-            {this.style.borderColor = "transparent";
-			 var index = answers.indexOf(this.alt);
-             answers.splice(index, 1);
-            } else {this.style.border = "5px solid gold";
-			this.style.borderRadius = "10px";
-			answers.push(this.alt);                    
+			if (this.style.border === "5px solid gold") {
+				this.style.borderColor = "transparent";
+				var index = answers.indexOf(this.alt);
+				answers.splice(index, 1);
+            } else {
+				this.style.border = "5px solid gold";
+				this.style.borderRadius = "10px";
+				answers.push(this.alt);                    
             }
           }
 		  document.getElementById("output").appendChild(x);             
