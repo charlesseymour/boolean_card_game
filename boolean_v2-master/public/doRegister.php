@@ -25,6 +25,10 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 	redirect('register.php');
 }
 
+if ($password != $confirmPassword) {
+	redirect('register.php');
+}
+
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 $user = createUser($username, $hashed, $email);
 $expTime = time() + 3600;
