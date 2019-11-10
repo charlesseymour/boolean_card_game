@@ -6,9 +6,11 @@ error_reporting(E_ALL);
 
 require '../inc/bootstrap.php';
 
+$username = request()->get('username');
+$email = request()->get('email');
 $password = request()->get('password');
 $confirmPassword = request()->get('confirm_password');
-$username = request()->get('username');
+
 $user = findUserByName($username);
 
 if (!empty($user)) {
@@ -19,9 +21,12 @@ if (strlen($username) > 50) {
 	redirect('register.php');
 }
 
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+	redirect('register.php');
+}
 
 $hashed = password_hash($password, PASSWORD_DEFAULT);
-$user = createUser($username, $hashed);
+$user = createUser($username, $hashed, $email);
 $expTime = time() + 3600;
 $jwt = \Firebase\JWT\JWT::encode([
 	'iss' => request()->getBaseUrl(),

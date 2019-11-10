@@ -34,15 +34,16 @@ function findUserByAccessToken()
 		throw $e;
 	}
 }
-function createUser($username, $password) 
+function createUser($username, $password, $email) 
 {
 	global $db;
 	
 	try {
-		$query = "INSERT INTO users (username, password) VALUES (:username, :password)";
+		$query = "INSERT INTO users (username, password, email) VALUES (:username, :password, :email)";
 		$stmt = $db->prepare($query);
 		$stmt->bindParam(':username', $username);
 		$stmt->bindParam(':password', $password);
+		$stmt->bindParam(':email', $email);
 		$stmt->execute();
 		return findUserByName($username);
 	} catch (\Exception $e) {
