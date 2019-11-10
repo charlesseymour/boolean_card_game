@@ -15,6 +15,10 @@ if (!empty($user)) {
 	redirect('register.php');
 }
 
+if (strlen($username) > 50) {
+	redirect('register.php');
+}
+
 
 $hashed = password_hash($password, PASSWORD_DEFAULT);
 $user = createUser($username, $hashed);
