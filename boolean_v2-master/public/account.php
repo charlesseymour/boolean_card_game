@@ -44,7 +44,9 @@ $pages = ceil(count($results) / $perPage);
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">ALL</h5>
-					<p class="win-percentage"><?php echo round((count($wins) / count($results)) * 100); ?>%</p>
+					<p class="win-percentage"><?php if (count($results) > 0) {
+						echo (round((count($wins) / count($results)) * 100)) . "%"; } else {
+						echo "n/a"; }; ?></p>
 				</div>
 			</div>
 		</div>
@@ -52,7 +54,9 @@ $pages = ceil(count($results) / $perPage);
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">AND</h5>
-					<p class="win-percentage"><?php echo round((count($winsAnd) / count($resultsAnd)) * 100); ?>%</p>
+					<p class="win-percentage"><?php if (count($resultsAnd) > 0) { 
+						echo round((count($winsAnd) / count($resultsAnd)) * 100) . "%"; } else {
+						echo "n/a"; }; ?></p>
 				</div>
 			</div>
 		</div>
@@ -60,7 +64,9 @@ $pages = ceil(count($results) / $perPage);
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">OR</h5>
-					<p class="win-percentage"><?php echo round((count($winsOr) / count($resultsOr)) * 100); ?>%</p>
+					<p class="win-percentage"><?php if (count($resultsOr) > 0) {
+						echo round((count($winsOr) / count($resultsOr)) * 100) . "%";} else {
+						echo "n/a"; }; ?></p>
 				</div>
 			</div>
 		</div>
@@ -68,7 +74,9 @@ $pages = ceil(count($results) / $perPage);
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">NOT</h5>
-					<p class="win-percentage"><?php echo round((count($winsNot) / count($resultsNot)) * 100); ?>%</p>
+					<p class="win-percentage"><?php if (count($resultsNot) > 0) { 
+						echo round((count($winsNot) / count($resultsNot)) * 100) . "%"; } else {
+						echo "n/a"; }; ?></p>
 				</div>
 			</div>
 		</div>
