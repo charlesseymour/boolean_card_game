@@ -40,7 +40,7 @@ $pages = ceil(count($results) / $perPage);
 		<h1 class="mx-auto">Win Percentages</h1>
 	</div>
 	<div class="row boolean-wins">
-		<div class="col-sm-3">
+		<div class="col-lg-3">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">ALL</h5>
@@ -50,7 +50,7 @@ $pages = ceil(count($results) / $perPage);
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-lg-3">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">AND</h5>
@@ -60,7 +60,7 @@ $pages = ceil(count($results) / $perPage);
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-lg-3">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">OR</h5>
@@ -70,7 +70,7 @@ $pages = ceil(count($results) / $perPage);
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-lg-3">
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">NOT</h5>
